@@ -1,0 +1,48 @@
+# - v1.0 - Configuration
+lighting:
+  # chunk-radius
+  maxradius: 8
+
+speed:
+  max: 10
+
+gods:
+  #uuid: true/false
+
+messages:
+  no-console: '&4Command should be used by a player.'
+  no-access: '&4You do not have permission to this command.'
+  player-not-found: '&cPlayer not found.'
+  no-console: '&4Command should be used by a player.'
+  burn: '&cPlayer has been set on fire.'
+  feed-dead: '&4Unable to feed the dead.'
+  feed: '&4You have been satiated.'
+  feed-other: '&6The player &3{name}&6 has been fed.'
+  neg-radius: '&4Radius may not be a negative value.'
+  radius-too-large: '&4The maxium radius allowed is &6{max}&4.'
+  fixlight: '&6Relighting the world around you.'
+  fixlight-complete: '&6Chunk relight complete.'
+  fly-dead: '&4Unable to make the dead fly.'
+  fly-enabled: '&6You have been given the gift of flight!'
+  fly-disabled: '&6Flight is no longer within your power.'
+  fly-other-enabled: '&6Fly &2enabled&6 for &3{name}&6.'
+  fly-other-disabled: '&6Fly &4disabled&6 for &3{name}&6.'
+  gamemode: '&6You game mode has been changed.'
+  gamemode-other: '&6Gamemode changed for &3{name}&6.'
+  uptime: '&6The server has been running for &f{uptime}&6.'
+  memory: '&6GC Used Memory &f{gcused}&7MB&6, Free &f{gcfree}&7MB&6, Max &f{gcmax}&7MB&6.'
+  gcworld: '&6{worldType} &f{world}&6 has &f{chunks}&6 chunks, &f{entities}&6 entities, &f{etiles}&6 etiles loaded.'
+  god-enabled: '&6God Mode &2enabled&6.'
+  god-disabled: '&6God Mode &4disabled&6.'
+  god-other-enabled: '&6God Mode &2enabled&6 for &3{name}&6.'
+  god-other-disabled: '&6God Mode &4disabled&6 for &3{name}&6.'
+  heal-dead: '&4Unable to return the dead to life.'
+  heal: '&6You have been healed.'
+  heal-other: '&6The player &3{name}&6 has been healed.'
+  lightning-too-far: '&cThat is too far away.'
+  smitten: '&6You have been smitten.'
+  lightning: '&6You have unleashed the power of Thor!'
+  repair-invalid: '&cYou can not repair that item.'
+  repair: '&6Item repaired.'
+  speed-fly: '&6Your flying speed has been changed.'
+  speed-walk: '&6Your walking speed has been changed.'
