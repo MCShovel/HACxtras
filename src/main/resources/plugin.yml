@@ -4,88 +4,10 @@ version: '1.0'
 author: rknapp
 load: startup
 commands:
-#Admin-only commands:
-  gamemode:
-    aliases: [gm, creative, survival, adventure, spectator, gmc, gms, gma, gmp]
-    description: Changes a player's gamemode.
-    usage: /<command> [c|s|a|p|creative|survival|adventure|spectator] [player]
-    permission: essentials.gamemode
-    permission-message: '§4You do not have permission to use this command.'
-    default: op
-  gc:
-    description: Reports memory, uptime and tick info.
-    usage: /<command>
-    aliases: [mem,memory]
-    permission: essentials.gc
-    permission-message: '§4You do not have permission to use this command.'
-    default: op
-  god:
-    description: Enables god-like powers.
-    usage: /<command> [player] [on|off]
-    aliases: [godmode]
-    permission: essentials.god
-    permission-message: '§4You do not have permission to use this command.'
-    default: op
-  repair:
-    description: Repairs the durability of the item you are holding.
-    usage: /<command>
-    aliases: [fix]
-    permission: essentials.repair
-    permission-message: '§4You do not have permission to use this command.'
-    default: op
-
-#Moderator commands:
-  fixlight:
-    aliases: [relight]
-    description: Fixes the chunk/block lighting in a given radius.
-    usage: /<command> [radius]
-    permission: essentials.fixlight
-    permission-message: '§4You do not have permission to use this command.'
-    default: op
-  fly:
-    description: Allows for creative mode fly.
-    usage: /<command> [player]
-    permission: essentials.fly
-    permission-message: '§4You do not have permission to use this command.'
-    default: op
-  heal:
-    description: Heals a player.
-    usage: /<command> [player]
-    permission: essentials.heal
-    permission-message: '§4You do not have permission to use this command.'
-    default: op
-  feed:
-    description: Satisfy the hunger.
-    usage: /<command> [player]
-    aliases: [eat]
-    permission: essentials.feed
-    permission-message: '§4You do not have permission to use this command.'
-    default: op
-  burn:
-    description: Set a player on fire.
-    usage: /<command> <player> [seconds = 30]
+  hacx:
+    description: 'Commands to control the fate of a player.'
+    usage: /<command> ban|brand|forgive|whitelist|reload <player>
     aliases: []
-    permission: essentials.burn
-    permission-message: '§4You do not have permission to use this command.'
-    default: op
-  fireball:
-    description: Throw a fireball.
-    usage: /<command> [small|skull]
-    aliases: []
-    permission: essentials.fireball
-    permission-message: '§4You do not have permission to use this command.'
-    default: op
-  lightning:
-    description: The power of Thor. Strike at cursor or player.
-    usage: /<command> [player]
-    aliases: [smite,strike,thor]
-    permission: essentials.lightning
-    permission-message: '§4You do not have permission to use this command.'
-    default: op
-  speed:
-    description: Change your speed limits.
-    usage: /<command> [type] <speed>
-    aliases: []
-    permission: essentials.speed
+    permission: hacx.admin
     permission-message: '§4You do not have permission to use this command.'
     default: op

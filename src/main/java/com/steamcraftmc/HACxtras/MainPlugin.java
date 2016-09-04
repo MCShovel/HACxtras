@@ -2,7 +2,6 @@ package com.steamcraftmc.HACxtras;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
  
 public class MainPlugin extends JavaPlugin {
@@ -10,8 +9,7 @@ public class MainPlugin extends JavaPlugin {
 	private WorldEvents _listener;
 	public Boolean _exLogging;
 	public final MainConfig Config;
-	public com.steamcraftmc.HACxtras.Commands.CmdGod god;
-	public com.steamcraftmc.HACxtras.Commands.CmdFireball fb;
+	public final PlayerStorage Store;
 
 	public MainPlugin() {
 		_exLogging = true;
@@ -21,6 +19,9 @@ public class MainPlugin extends JavaPlugin {
 		
 		Config = new MainConfig(this);
 		Config.load();
+		
+		Store = new PlayerStorage(this);
+		Store.load();
 	}
 
 	public void log(Level level, String text) {
@@ -29,31 +30,16 @@ public class MainPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        new com.steamcraftmc.HACxtras.Commands.CmdFeed(this);
-        new com.steamcraftmc.HACxtras.Commands.CmdHeal(this);
-        new com.steamcraftmc.HACxtras.Commands.CmdFixLight(this);
-        new com.steamcraftmc.HACxtras.Commands.CmdFly(this);
-        new com.steamcraftmc.HACxtras.Commands.CmdGameMode(this);
-        new com.steamcraftmc.HACxtras.Commands.CmdBurn(this);
-        new com.steamcraftmc.HACxtras.Commands.CmdLightning(this);
-        fb = new com.steamcraftmc.HACxtras.Commands.CmdFireball(this);
-        new com.steamcraftmc.HACxtras.Commands.CmdGC(this);
-        god = new com.steamcraftmc.HACxtras.Commands.CmdGod(this);
-        new com.steamcraftmc.HACxtras.Commands.CmdRepair(this);
-        new com.steamcraftmc.HACxtras.Commands.CmdSpeed(this);
+        //new com.steamcraftmc.HACxtras.Commands.CmdReload(this);
 
     	_listener = new WorldEvents(this);
-        getServer().getPluginManager().registerEvents(_listener, this);
-        fb.start();
-        god.start();
+    	_listener.start();
         log(Level.INFO, "Plugin listening for events.");
     }
 
     @Override
     public void onDisable() {
-        fb.stop();
-        god.stop();
-    	HandlerList.unregisterAll(_listener);
+    	_listener.stop();
     }
 
 }

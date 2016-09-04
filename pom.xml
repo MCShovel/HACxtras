@@ -33,5 +33,12 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/../spigot/spigot.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>com.heirteir</groupId>
+            <artifactId>HAC</artifactId>
+            <version>LATEST</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/../../plugins/HAC/HAC.jar</systemPath>
+        </dependency>
     </dependencies>
 </project>

@@ -1,48 +1,119 @@
 # - v1.0 - Configuration
-lighting:
-  # chunk-radius
-  maxradius: 8
 
-speed:
-  max: 10
+options:
+  # send staff noticies to all staff on all connected bungee servers
+  use_bungeecord: true
+  # uses the scoreboard feature to brand cheaters
+  use_scoreboard_teams: true
+  # permission used to test if the user can see staff notice
+  staff_permission: 'hacx.staff'
+  # permission used to test if the user can see public announcement
+  announce_permission: 'hacx.announce'
+  # reduce their violation counters every minute
+  reduce_ticks: 1200
 
-gods:
-  #uuid: true/false
+warning:
+  announce: ''
+  message: '&cYou are being recorded for possible cheating. &8(#{id})'
+  staff: '&6[STAFF] &cThe player &3{player}&c is suspected of using &5&l{hack}&r. &8(#{id})'
+  scoreboard_team: '&c[Suspicious]'
+
+action:
+  announce: '&f[&4WARN&f] &6Everyone watch out for the cheater &3{player}&6.'
+  message: '&cYou have been branded as a cheater! &8(#{id})'
+  staff: '&6[STAFF] &cThe player &3{player}&c is using &5&l{hack}&r. &8(#{id})'
+  scoreboard_team: '&4[Cheater]'
+  kick: true
+
+ban:
+  announce: '&f[&eNOTICE&f] &6The user &3{player}&6 has been banned for cheating.'
+  message: '&cYou have been banned for cheating. &8(#{id})'
+  staff: '&6[STAFF] &cThe player &3{player}&c has been &4banned&c for using &5&l{hack}&r. &8(#{id})'
+  scoreboard_team: ''
+  ban: true
+
+rules:
+  # General forms of attack
+  Bad Packets:
+    warning_level: 1
+    action_level: 3
+    ban_level: 15
+
+  Impossible Interaction:
+    warning_level: 1
+    action_level: 3
+    ban_level: 15
+
+  Impossible Movements:
+    warning_level: 1
+    action_level: 3
+    ban_level: 15
+
+  #Combat related
+  Criticals:
+    warning_level: 3
+    action_level: 5
+    ban_level: 30
+
+  Kill Aura:
+    warning_level: 1
+    action_level: 3
+    ban_level: 7
+
+  #Player Hacks
+  Fast Eat:
+    warning_level: 3
+    action_level: 5
+    ban_level: 10
+
+  Fast Place:
+    warning_level: 3
+    action_level: 10
+    ban_level: 25
+
+  #Movement Hacks, while cheating have little benefit in combat
+  Fly:
+    warning_level: 10
+    action_level: 30
+    ban_level: 150
+
+  Step:
+    warning_level: 10
+    action_level: 30
+    ban_level: 150
+
+  Speed:
+    warning_level: 10
+    action_level: 30
+    ban_level: 150
+
+  Glide:
+    warning_level: 10
+    action_level: 30
+    ban_level: 150
+
+  Jesus:
+    warning_level: 10
+    action_level: 30
+    ban_level: 150
+
+  No Fall:
+    warning_level: 10
+    action_level: 30
+    ban_level: 150
+
+  Headless:
+    warning_level: 10
+    action_level: 30
+    ban_level: 150
+
+  #Misc Stuff
+  Spam:
+    warning_level: -1
+    action_level: -1
+    ban_level: -1
 
 messages:
-  no-console: '&4Command should be used by a player.'
-  no-access: '&4You do not have permission to this command.'
-  player-not-found: '&cPlayer not found.'
-  no-console: '&4Command should be used by a player.'
-  burn: '&cPlayer has been set on fire.'
-  feed-dead: '&4Unable to feed the dead.'
-  feed: '&4You have been satiated.'
-  feed-other: '&6The player &3{name}&6 has been fed.'
-  neg-radius: '&4Radius may not be a negative value.'
-  radius-too-large: '&4The maxium radius allowed is &6{max}&4.'
-  fixlight: '&6Relighting the world around you.'
-  fixlight-complete: '&6Chunk relight complete.'
-  fly-dead: '&4Unable to make the dead fly.'
-  fly-enabled: '&6You have been given the gift of flight!'
-  fly-disabled: '&6Flight is no longer within your power.'
-  fly-other-enabled: '&6Fly &2enabled&6 for &3{name}&6.'
-  fly-other-disabled: '&6Fly &4disabled&6 for &3{name}&6.'
-  gamemode: '&6You game mode has been changed.'
-  gamemode-other: '&6Gamemode changed for &3{name}&6.'
-  uptime: '&6The server has been running for &f{uptime}&6.'
-  memory: '&6GC Used Memory &f{gcused}&7MB&6, Free &f{gcfree}&7MB&6, Max &f{gcmax}&7MB&6.'
-  gcworld: '&6{worldType} &f{world}&6 has &f{chunks}&6 chunks, &f{entities}&6 entities, &f{etiles}&6 etiles loaded.'
-  god-enabled: '&6God Mode &2enabled&6.'
-  god-disabled: '&6God Mode &4disabled&6.'
-  god-other-enabled: '&6God Mode &2enabled&6 for &3{name}&6.'
-  god-other-disabled: '&6God Mode &4disabled&6 for &3{name}&6.'
-  heal-dead: '&4Unable to return the dead to life.'
-  heal: '&6You have been healed.'
-  heal-other: '&6The player &3{name}&6 has been healed.'
-  lightning-too-far: '&cThat is too far away.'
-  smitten: '&6You have been smitten.'
-  lightning: '&6You have unleashed the power of Thor!'
-  repair-invalid: '&cYou can not repair that item.'
-  repair: '&6Item repaired.'
-  speed-fly: '&6Your flying speed has been changed.'
-  speed-walk: '&6Your walking speed has been changed.'
+  'no-access': '&4You do not have permission to this command.'
+  'player-not-found': '&cPlayer not found.'
+  'hac-console': '{player}({x},{y},{z},{ping}ping,{tps}tps) VIOLOATION: #{id} {type} {severity}'
