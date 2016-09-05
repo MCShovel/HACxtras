@@ -45,9 +45,9 @@ rules:
     ban_level: 15
 
   Impossible Movements:
-    warning_level: 1
-    action_level: 3
-    ban_level: 15
+    warning_level: 5
+    action_level: 15
+    ban_level: 50
 
   #Combat related
   Criticals:
