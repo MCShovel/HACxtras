@@ -3,6 +3,7 @@ package com.steamcraftmc.HACxtras.utils;
 import java.util.*;
 import java.util.Map.Entry;
 
+import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 
@@ -16,6 +17,7 @@ public class PlayerData {
 	private final HashMap<String, Integer> violations;
 	private Long quitTime;
 	public boolean hasWarned, hasBranded;
+	public Location lastViloationAt;
 	
 	public PlayerData(MainPlugin plugin, Player player) {
 		this(plugin, player.getUniqueId(), player.getName());
@@ -91,6 +93,7 @@ public class PlayerData {
 	public void pardon() {
 		plugin.Store.Write(uuid + ".team", "");
 		plugin.Store.Write(uuid + ".banned_reason", "");
+		violations.clear();
 	}
 
 	public String getTeam() {

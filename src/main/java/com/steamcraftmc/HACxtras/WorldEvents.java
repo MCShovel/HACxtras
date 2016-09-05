@@ -130,11 +130,12 @@ public class WorldEvents implements Listener, PluginMessageListener, Runnable {
 			PlayerData pdata = getPlayer(p);
 			pdata.join();
 			
+			for (Team t : teams.values()) {
+				t.removePlayer(p);
+			}
+
 			String team = pdata.getTeam();
 			if (team != null && team.length() > 0 && teams.containsKey(team)) {
-				for (Team t : teams.values()) {
-					t.removePlayer(p);
-				}
 				teams.get(team).addPlayer(p);
 			}
 		}
@@ -148,6 +149,22 @@ public class WorldEvents implements Listener, PluginMessageListener, Runnable {
 		getPlayer(e.getPlayer()).quit();
 	}
 
+	public void onResetTeams() {
+		for (Player p : plugin.getServer().getOnlinePlayers()) {
+			for (Team t : teams.values()) {
+				t.removePlayer(p);
+			}
+
+			PlayerData pdata = getPlayer(p);
+			if (pdata != null) {
+				String team = pdata.getTeam();
+				if (team != null && team.length() > 0 && teams.containsKey(team)) {
+					teams.get(team).addPlayer(p);
+				}
+			}
+		}
+	}
+	
 	@Override
 	public void run() {
 		PlayerData[] all = new PlayerData[this.players.size()]; 
@@ -172,6 +189,7 @@ public class WorldEvents implements Listener, PluginMessageListener, Runnable {
 		final Location loc = p.getLocation();
 		
 		final PlayerData pdata = getPlayer(p);
+		final String hacName = e.getHackType();
 
 		if (p.hasPermission("hacx.whitelisted") || pdata.whitelisted())
 			return;
@@ -189,10 +207,21 @@ public class WorldEvents implements Listener, PluginMessageListener, Runnable {
 						"severity", ourCount // e.getThreshold()
 					)
 				);
-		
+
+		if (pdata.lastViloationAt != null && pdata.lastViloationAt.distanceSquared(loc) <= 2 && ourCount < 5) {
+			if (hacName.equals("Impossible Interaction") || hacName.equals("Impossible Movements") || hacName.equals("Fly")) {
+				e.setCancelled(true);
+				return;
+			}
+		}
+		if (ourCount < 5 && hacName.equals("Fast Place")) {
+			e.setCancelled(true);
+		}
+
+		pdata.lastViloationAt = loc;
+
 		try {
 			final int hacId = e.getId();
-			final String hacName = e.getHackType();
 			final ConfigurationSection actions = pdata.increment(hacName);
 			final HashMap<String, Team> teams = this.teams;
 			if (actions != null) {

@@ -51,10 +51,15 @@ public class MainPlugin extends JavaPlugin {
     	Config.load();
     	Store.load();
     	_listener.start();
+    	_listener.onResetTeams();
 	}
 
 	public PlayerData getPlayerByName(String name) {
 		return _listener.getPlayer(name);
+	}
+	
+	public void onResetTeams() {
+    	_listener.onResetTeams();
 	}
 
 }

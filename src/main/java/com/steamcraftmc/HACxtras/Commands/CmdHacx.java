@@ -29,6 +29,7 @@ public class CmdHacx extends BaseCommand {
 			if (player == null) break;
 			player.pardon();
 			sender.sendMessage(plugin.Config.get("messages.pardon", "&6Player has been pardoned."));
+			plugin.onResetTeams();
 			break;
 		case "whitelist":
 			player = getPlayer(sender, args);
