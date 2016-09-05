@@ -117,3 +117,6 @@ messages:
   'no-access': '&4You do not have permission to this command.'
   'player-not-found': '&cPlayer not found.'
   'hac-console': '{player}({x},{y},{z},{ping}ping,{tps}tps) VIOLOATION: #{id} {type} {severity}'
+  'config-reloaded': '&6Configuration reloaded.'
+  'pardon': '&6Player has been pardoned.'
+  'whitelisted': '&6Player has been whitelisted.'

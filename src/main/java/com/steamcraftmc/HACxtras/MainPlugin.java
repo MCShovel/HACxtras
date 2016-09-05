@@ -2,7 +2,11 @@ package com.steamcraftmc.HACxtras;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import com.steamcraftmc.HACxtras.utils.PlayerData;
  
 public class MainPlugin extends JavaPlugin {
 	public final   Logger  _logger;
@@ -30,7 +34,7 @@ public class MainPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        //new com.steamcraftmc.HACxtras.Commands.CmdReload(this);
+        new com.steamcraftmc.HACxtras.Commands.CmdHacx(this);
 
     	_listener = new WorldEvents(this);
     	_listener.start();
@@ -41,5 +45,16 @@ public class MainPlugin extends JavaPlugin {
     public void onDisable() {
     	_listener.stop();
     }
+
+	public void reload() {
+    	_listener.stop();
+    	Config.load();
+    	Store.load();
+    	_listener.start();
+	}
+
+	public PlayerData getPlayerByName(String name) {
+		return _listener.getPlayer(name);
+	}
 
 }

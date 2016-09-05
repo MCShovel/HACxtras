@@ -5,11 +5,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 
@@ -128,5 +130,15 @@ public abstract class BaseYamlSettingsFile {
 	
 	public int getInt(String name, int def) {
 		return getConfig(name, def).getInt(name, def);
+	}
+	
+	public List<ConfigurationSection> getSections() {
+		ArrayList<ConfigurationSection> sections = new ArrayList<ConfigurationSection>(); 
+		for (String key : configFile.getKeys(false)) {
+			ConfigurationSection sec = configFile.getConfigurationSection(key);
+			if (sec != null)
+				sections.add(sec);
+		}
+		return sections;
 	}
 }

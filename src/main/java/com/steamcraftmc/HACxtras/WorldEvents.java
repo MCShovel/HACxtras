@@ -95,11 +95,26 @@ public class WorldEvents implements Listener, PluginMessageListener, Runnable {
 		}
 		return pdata;
 	}	
+
+	public PlayerData getPlayer(String name) {
+		for (PlayerData pd : this.players.values()) {
+			if (pd.name.equalsIgnoreCase(name)) {
+				return pd;
+			}
+		}
+			
+		Player p = plugin.getServer().getPlayer(name);
+		if (p != null) {
+			return getPlayer(p);
+		}
+
+		return null;
+	}	
 	
 	@EventHandler
 	public void onPlayerPreLogin(AsyncPlayerPreLoginEvent e) {
 		String banned = plugin.Store.getRaw(e.getUniqueId() + ".banned_reason");
-		if (banned != null) {
+		if (banned != null && banned.length() > 0) {
 			e.disallow(Result.KICK_BANNED, banned);
 		}
 	}
@@ -116,7 +131,7 @@ public class WorldEvents implements Listener, PluginMessageListener, Runnable {
 			pdata.join();
 			
 			String team = pdata.getTeam();
-			if (team != null && teams.containsKey(team)) {
+			if (team != null && team.length() > 0 && teams.containsKey(team)) {
 				for (Team t : teams.values()) {
 					t.removePlayer(p);
 				}
@@ -296,4 +311,5 @@ public class WorldEvents implements Listener, PluginMessageListener, Runnable {
 			}
 		}
 	}
+
 }

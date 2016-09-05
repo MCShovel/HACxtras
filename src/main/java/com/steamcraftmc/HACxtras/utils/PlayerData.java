@@ -18,9 +18,13 @@ public class PlayerData {
 	public boolean hasWarned, hasBranded;
 	
 	public PlayerData(MainPlugin plugin, Player player) {
+		this(plugin, player.getUniqueId(), player.getName());
+	}
+
+	public PlayerData(MainPlugin plugin, UUID uuid, String name) {
 		this.plugin = plugin;
-		this.uuid = player.getUniqueId();
-		this.name = player.getName();
+		this.uuid = uuid;
+		this.name = name;
 		this.violations = new HashMap<String, Integer>();
 		this.quitTime = null;
 	}
@@ -75,11 +79,20 @@ public class PlayerData {
 
 		return plugin.getConfig().getConfigurationSection("ban");
 	}
-	
+
+	public void whitelist(boolean add) {
+		plugin.Store.Write(uuid + ".whitelisted", add);
+	}
+
 	public boolean whitelisted() {
 		return plugin.Store.getRaw(uuid + ".whitelisted") == "true";
 	}
-	
+
+	public void pardon() {
+		plugin.Store.Write(uuid + ".team", "");
+		plugin.Store.Write(uuid + ".banned_reason", "");
+	}
+
 	public String getTeam() {
 		return plugin.Store.getRaw(uuid + ".team");
 	}
